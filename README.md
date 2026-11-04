@@ -17,7 +17,6 @@ A hands-on lab deploying [Cowrie](https://github.com/cowrie/cowrie), an open-sou
 |---|---|---|
 | Honeypot host | Ubuntu (VMware VM) | Cowrie 3.0.15, Python 3 venv |
 | Testing machine | Kali Linux (VMware VM) | Nmap, OpenSSH client |
-| Network | `192.168.1.0/24` | *Update: bridged / NAT / host-only* |
 
 Cowrie listens on **port 2222** (default), so it does not conflict with the real SSH service on port 22.
 
@@ -48,7 +47,8 @@ cowrie init     # generates etc/cowrie.cfg and the var/ directory structure
 cowrie start
 ```
 
-![Install, init and start](screenshots/01-install-init-start.jpg)
+<img width="1482" height="897" alt="Screenshot 2026-11-04 054552" src="https://github.com/user-attachments/assets/8d10906a-889f-4d6f-85f6-5e947f5e2476" />
+
 
 ### 4. Scan and connect from Kali
 
@@ -59,7 +59,8 @@ ssh -p 2222 ubuntu@192.168.1.16
 
 Nmap reported ports 443, 2222, and 8080 open. Port 2222 is Cowrie (Nmap labels it `EtherNetIP-1` because it guesses services from port numbers). Inside the SSH session, Cowrie presented a fake host (`svr04`) with a decoy `phil` home directory, and I ran `ls` and `cd` to simulate attacker reconnaissance.
 
-![Nmap scan and SSH session](screenshots/02-nmap-ssh.jpg)
+<img width="1906" height="896" alt="Screenshot 2026-11-04 054832" src="https://github.com/user-attachments/assets/c6b05073-34b2-487a-87bf-d6b246246e4a" />
+
 
 ### 5. Review the logs
 
@@ -79,7 +80,8 @@ CMD: cd ..
 CMD: cd phil
 ```
 
-![Cowrie logs](screenshots/03-cowrie-logs.jpg)
+<img width="1505" height="905" alt="Screenshot 2026-11-04 055056" src="https://github.com/user-attachments/assets/d25f905e-3c17-47bf-827f-dd57dd0dd633" />
+
 
 ## Results
 
